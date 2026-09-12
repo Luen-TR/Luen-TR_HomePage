@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <title>SOXLちゃんは今日も三倍 — SOXL HEARTBEAT</title>
+  <meta name="description" content="小説「SOXLちゃんは今日も三倍」をもとに、実際の相場と暮らすノベルゲーム。一枚絵のある日常、半導体の友人たち、恋とトレードが交差する。">
+  <link rel="icon" href="assets/images/icon.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/novel.css">
+  <link rel="preload" as="image" href="assets/scenes/room-morning.png">
+  <script type="module" src="assets/js/game.js"></script>
+</head>
+<body class="novel-mode">
+  <a class="skip" href="#main">ゲームへスキップ</a>
+  <header class="app-header">
+    <a href="../index.html" class="home-link" aria-label="ルエンのホームページへ">LUEN<span>↗</span></a>
+    <a href="#main" class="wordmark">SOXL <b>HEARTBEAT</b><span class="heart">♡</span></a>
+    <nav aria-label="ゲームメニュー"><button id="help-button" class="quiet">遊び方</button><button id="menu-button" class="quiet" hidden>メニュー</button></nav>
+  </header>
+  <main id="main">
+    <section id="start-screen" class="start-screen" aria-labelledby="game-title">
+      <div class="start-copy">
+        <p class="eyebrow">SOXL HEARTBEAT / A VISUAL NOVEL</p>
+        <h1 id="game-title">SOXLちゃんは<br>今日も<span>三倍。</span></h1>
+        <p class="start-lead">「これは、一倍で、嬉しい」</p>
+        <form id="start-form" class="start-form">
+          <div class="form-heading"><span class="tiny-label">01 / CHOOSE YOUR DAYS</span><span id="data-status" class="muted" role="status">過去の日足を読み込み中…</span></div>
+          <details class="period-settings"><summary>物語の時期・期間を選ぶ</summary>
+          <div class="era-buttons" aria-label="開始時期の候補">
+            <button type="button" data-start="2010-03-11">2010 <small>はじまり</small></button>
+            <button type="button" data-start="2020-02-03" class="selected">2020 <small>あの春</small></button>
+            <button type="button" data-start="2022-01-03">2022 <small>冬から</small></button>
+            <button type="button" data-start="2023-05-01">2023 <small>新緑</small></button>
+            <button type="button" data-start="2026-06-01">2026 <small>この夏</small></button>
+          </div>
+          <div class="start-fields"><label>好きな日から始める<input id="start-date" type="date" value="2020-02-03" min="2010-03-11" required></label><label>一緒に過ごす期間<select id="duration"><option value="30">30営業日 · 短編</option><option value="60" selected>60営業日 · おすすめ</option><option value="120">120営業日 · じっくり</option><option value="0">収録最終日まで</option></select></label></div>
+          </details>
+          <p id="period-note" class="small muted">休日を選ぶと、次の営業日から始まります。</p>
+          <button id="new-game" class="primary start-button" type="submit" disabled>この季節の彼女に会う <span>→</span></button>
+          <button id="continue-button" class="continue-button" type="button" hidden>つづきから</button>
+          <p class="start-footnote">初期資金 $10,000 · ブラウザに自動セーブ</p>
+        </form>
+      </div>
+      <div class="start-visual"><img src="assets/scenes/room-morning.png" alt="朝日の差す部屋で、マグカップを手に迎えてくれるSOXLちゃん" fetchpriority="high"><div class="start-quote"><span>SOXLちゃん</span><p>「この部屋、半導体でいっぱい。<br>……いい部屋だね」</p></div></div>
+    </section>
+
+    <section id="game-screen" class="game-screen" hidden aria-label="SOXLちゃんと過ごす物語">
+      <div id="character-stage" class="character-stage">
+        <img id="story-art" class="story-art" src="assets/backgrounds/room-morning.png" alt="朝の自宅">
+        <div id="standing-character" class="standing-character" role="img" aria-label="SOXLちゃん" hidden>
+          <img id="standing-body" alt="" width="1024" height="1536">
+          <img id="standing-eyes" class="face-layer eyes-layer" alt="" width="1024" height="1536" hidden>
+          <img id="standing-mouth" class="face-layer mouth-layer" alt="" width="1024" height="1536" hidden>
+        </div>
+        <span id="cg-caption" class="cg-caption" hidden>思い出の一枚</span>
+        <div class="scene-shade" aria-hidden="true"></div>
+        <div class="scene-hud">
+          <div class="scene-position"><span id="chapter-label">第一話 / 三倍の朝</span><h1 id="location-name">自宅・朝</h1><p>米国 <time id="current-date"></time><span id="day-counter" class="day-counter"></span></p></div>
+          <div class="scene-status"><span id="mood-label" class="mood-label"></span><span id="relationship-label" class="relationship-label"></span><div class="relationship"><div><span>♡ 親密度</span><strong id="affection-value">25</strong><progress id="affection-meter" max="100" value="25" aria-label="親密度"></progress></div><div><span>◇ 信頼</span><strong id="trust-value">25</strong><progress id="trust-meter" max="100" value="25" aria-label="信頼"></progress></div></div><button id="view-art" class="glass-button">ウィンドウを隠す</button></div>
+        </div>
+        <div class="session-progress"><div id="session-progress"></div></div>
+        <div id="date-plan" class="date-plan" hidden></div>
+        <div class="novel-console">
+          <div class="dialogue-box">
+            <div class="dialogue-heading"><div class="speaker"><span id="dialogue-tag">SOXLちゃん</span></div><div class="reading-controls"><button id="reveal-line" class="text-button" hidden>全文表示</button><span id="dialogue-counter">今日の会話</span></div></div>
+            <p id="scene-text" class="scene-text" hidden></p>
+            <p id="dialogue-text" class="dialogue-text" aria-hidden="true"></p>
+            <p id="dialogue-accessible" class="visually-hidden" role="status" aria-live="polite"></p>
+            <div id="dialogue-choices" class="dialogue-choices"></div>
+            <p id="relationship-feedback" class="relationship-feedback" aria-live="polite" hidden></p>
+            <div id="story-source" class="story-source" hidden></div>
+          </div>
+          <div class="advance-bar"><div class="novel-actions"><button id="trade-button" class="glass-button">▥ 相場と売買 <span id="trade-badge"></span></button><button id="date-button" class="glass-button">♡ デート</button><button id="family-button" class="glass-button">仲間の近況</button><button id="record-button" class="glass-button">思い出</button><button id="backlog-button" class="glass-button">会話ログ</button></div><button id="advance-button" class="primary">続きを読む <span>▸</span></button></div>
+          <div class="scene-foot"><span id="advance-label"></span><small id="advance-note"></small><span id="save-status">自動セーブ</span></div>
+        </div>
+        <button id="restore-ui" class="glass-button restore-ui" hidden>会話に戻る</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>SOXL HEARTBEAT <span class="heart">♡</span> by Luen</span><span id="coverage">日足データを読み込み中</span></footer>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="trade-modal" class="trade-window" aria-labelledby="trade-title"><div class="modal-header"><h2 id="trade-title">今夜の作戦会議</h2><button id="trade-close" class="icon-button" aria-label="物語に戻る">×</button></div><p class="trade-intro">窓の外は夜。チャートを確認して、明日の注文を決める。</p>        <div class="market-column">
+          <section class="account-strip" aria-label="運用状況"><div class="total-stat"><span>総資産</span><strong id="total-equity">$10,000.00</strong><small id="total-return"></small></div><div><span>現金</span><strong id="cash"></strong></div><div><span>保有評価額</span><strong id="holding-value"></strong><small id="holding-shares"></small></div></section>
+          <section class="chart-card" aria-labelledby="chart-title">
+            <div class="chart-heading"><div><h2 id="chart-title">SOXL <span>日足 / USD</span></h2><div class="quote"><strong id="close-price"></strong><span id="daily-change"></span></div></div><div class="chart-range" role="group" aria-label="ローソク足の表示本数"><button data-range="30">30日</button><button data-range="60" class="selected" aria-pressed="true">60日</button><button data-range="120">120日</button></div></div>
+            <p id="chart-readout" class="chart-readout" aria-live="off"></p>
+            <div class="canvas-wrap"><canvas id="price-chart" tabindex="0" aria-label="過去の日足ローソク足。左右キーで各日の四本値を選択。下の日足データから表でも確認できます。"></canvas></div>
+            <div class="chart-legend"><span><i class="green"></i>陽線</span><span><i class="pink"></i>陰線</span><span><i class="purple"></i>20日平均</span><span>▲ 買い / ▼ 売り</span><button id="ohlc-button" class="text-button">日足データ</button></div>
+            <div class="market-note"><span class="note-label">SOXLちゃんの相場メモ</span><p id="market-explanation"></p><div id="context-event" class="context-event" hidden></div></div>
+          </section>
+          <section class="ticket" aria-labelledby="ticket-title"><div class="section-heading"><h2 id="ticket-title">明日の作戦</h2><span class="small muted">翌営業日の始値で約定</span></div><div class="trade-settings"><span class="small">現金 / 保有株の</span><div class="fraction-buttons" role="group" aria-label="注文割合"><button data-fraction="0.25">25%</button><button data-fraction="0.5" class="selected" aria-pressed="true">50%</button><button data-fraction="1">100%</button></div><button id="buy-button" class="buy-button">買い予約</button><button id="sell-button" class="sell-button">売り予約</button></div><div class="pending-line"><p id="pending-order">予約なし · このままなら保有を継続</p><button id="cancel-order" class="text-button" hidden>取り消す</button></div><details class="position-details"><summary>ポジション詳細</summary><dl><div><dt>平均取得単価（手数料込）</dt><dd id="average-cost"></dd></div><div><dt>含み損益</dt><dd id="unrealized"></dd></div><div><dt>確定損益</dt><dd id="realized"></dd></div><div><dt>売買手数料の合計</dt><dd id="fees"></dd></div></dl></details></section>
+        </div>
+<button id="return-to-story" class="primary return-to-story">部屋に戻る →</button></dialog>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-header"><h2 id="modal-title"></h2><button id="modal-close" class="icon-button" aria-label="閉じる">×</button></div><div id="modal-content"></div></dialog>
+</body>
+</html>

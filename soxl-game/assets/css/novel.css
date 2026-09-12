@@ -1,0 +1,223 @@
+/* The story is the main stage; the original market surface lives in a dialogue. */
+.novel-mode { --pink:#f5adcf; --cyan:#bce9ef; --line:#65708055; font-size:16px; }
+.novel-mode .app-header { max-width:none; min-height:62px; padding:0 28px; background:#111a27; }
+.novel-mode .quiet { font-size:14px; }
+.novel-mode .start-screen { max-width:none; min-height:calc(100svh - 62px); padding:45px max(5vw,24px); position:relative; isolation:isolate; display:block; }
+.novel-mode .start-copy { max-width:550px; padding:30px 35px; background:linear-gradient(110deg,#0c192df5,#102238ea); border:1px solid #ceddf73b; border-radius:5px 35px 5px 35px; box-shadow:0 25px 60px #02081144; backdrop-filter:blur(14px); }
+.novel-mode .start-copy h1 { font-family:"Hiragino Mincho ProN","Yu Mincho",serif; font-size:clamp(35px,4.3vw,56px); letter-spacing:.04em; line-height:1.4; }
+.novel-mode .start-visual { position:absolute; inset:0; width:100%; height:100%; min-height:0; max-height:none; border:0; border-radius:0; z-index:-1; }
+.novel-mode .start-visual>img { object-fit:cover; object-position:62% 44%; width:100%; height:100%; }
+.novel-mode .start-visual:after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#0b142343,transparent 75%); }
+.novel-mode .start-quote { bottom:50px; right:5vw; left:auto; width:360px; background:#122138c9; }
+.novel-mode .start-description { font-size:14px; color:#ccd6e3; }
+.novel-mode .start-form { margin-top:22px; }
+.novel-mode .game-tags { margin:17px 0; }
+.novel-mode .game-tags span { font-size:12px; border:none; padding:0; margin-right:10px; }
+.novel-mode .form-heading .muted,.novel-mode .tiny-label { font-size:12px; }
+.novel-mode .era-buttons small { font-size:12px; }
+.novel-mode label,.novel-mode .start-footnote { font-size:13px; }
+.novel-mode .game-screen { max-width:none; padding:0; margin:0; }
+.novel-mode.playing .site-footer { display:none; }
+.novel-mode .character-stage { width:100%; height:calc(100svh - 62px); min-height:730px; border:0; border-radius:0; background:#142033; overflow:hidden; }
+.novel-mode .character-stage:after { display:none; }
+.novel-mode .character-stage>.story-art { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
+.scene-shade { position:absolute; inset:0; background:linear-gradient(#071321aa 0,transparent 35%,transparent 48%,#081226a8 100%); pointer-events:none; }
+.scene-hud { position:absolute; top:25px; left:3vw; right:3vw; display:flex; align-items:start; justify-content:space-between; gap:20px; z-index:2; text-shadow:0 2px 7px #0009; }
+.scene-position>span { font-size:14px; letter-spacing:.1em; color:#e8d6f0; }
+.scene-position h1 { font-family:"Hiragino Mincho ProN","Yu Mincho",serif; font-size:29px; letter-spacing:.08em; margin:6px 0; }
+.scene-position p { font-size:14px; color:#e3e7f0; }
+.novel-mode .day-counter { font-size:12px; }
+.scene-status { width:285px; text-align:right; }
+.novel-mode .mood-label,.novel-mode .relationship-label { font-size:12px; display:inline-block; background:#172438a8; border-color:#d3deef5c; margin-bottom:8px; }
+.novel-mode .relationship { gap:16px; padding:5px 4px 10px; text-align:left; }
+.novel-mode .relationship>div { color:#ecedf6; font-size:13px; }
+.novel-mode .relationship strong { font-size:14px; }
+.novel-mode .session-progress { position:absolute; top:0; left:0; right:0; margin:0; background:transparent; }
+.novel-mode .date-plan { position:absolute; top:180px; left:3vw; z-index:2; border:1px solid #e2c3d55c; border-radius:5px; padding:7px 14px; background:#38243ea8; backdrop-filter:blur(5px); font-size:13px; }
+.novel-console { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); width:min(1160px,94%); z-index:3; }
+.novel-mode .dialogue-box { background:linear-gradient(110deg,#102139ef,#17263be3); border:1px solid #d3e0f785; border-radius:8px 24px 8px 24px; padding:18px 28px 20px; box-shadow:0 12px 45px #0006; backdrop-filter:blur(12px); min-height:215px; }
+.novel-mode .dialogue-heading { margin-bottom:7px; }
+.speaker { display:flex; align-items:center; gap:12px; }
+.speaker>img { width:44px; height:44px; object-fit:cover; object-position:50% 10%; border:1px solid #bccfeb80; border-radius:50%; }
+.novel-mode .dialogue-heading .speaker>span { font-size:17px; font-weight:700; color:#d2e9ff; letter-spacing:.06em; }
+#dialogue-counter { font-size:12px; color:#c2cfe0; }
+.novel-mode .dialogue-text { font-size:18px; line-height:2; min-height:72px; margin:7px 0 12px; letter-spacing:.025em; white-space:pre-line; }
+.novel-mode .dialogue-choices { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.novel-mode .dialogue-choices button { padding:11px 15px; min-height:50px; font-size:14px; border-color:#a3b8d063; background:#213347c9; line-height:1.7; }
+.novel-mode .scene-text { font-size:14px; color:#e0d6e9; }
+.novel-mode .relationship-feedback { font-size:13px; margin:9px 0 0; }
+.novel-mode .advance-bar { border:0; border-radius:0; background:none; backdrop-filter:none; box-shadow:none; padding:12px 0 0; margin:0; position:relative; gap:18px; }
+.novel-actions { display:flex; flex-wrap:wrap; gap:7px; align-items:center; }
+.glass-button { border:1px solid #dce6f154; border-radius:5px; background:#12253bdc; color:#f0eaf3; font-size:14px; padding:10px 13px; min-height:42px; backdrop-filter:blur(8px); }
+.glass-button:hover:not(:disabled) { background:#3a4765; border-color:#e3d3e9; }
+.novel-mode .advance-bar .primary { min-width:190px; border-radius:6px; background:#ecd3e7; border-color:#ecd3e7; color:#32283c; font-size:16px; min-height:45px; }
+.novel-mode .advance-bar .primary:hover:not(:disabled) { background:#ffe9f9; }
+.scene-foot { display:flex; gap:12px; justify-content:space-between; font-size:12px; color:#e0e3ef; text-shadow:0 1px 4px #000; padding-top:6px; }
+.scene-foot small { font-size:12px; margin-right:auto; }
+.story-source { font-size:12px; color:#bfcee2; padding-top:7px; }
+.story-source a { color:#d8e9ff; text-decoration:underline; }
+.restore-ui { position:absolute; bottom:35px; right:35px; z-index:6; background:#14243ddc; }
+.art-only .scene-hud,.art-only .novel-console,.art-only .scene-shade,.art-only .date-plan { display:none!important; }
+.art-only.character-stage>.story-art { object-fit:contain; }
+.novel-mode .character-stage.react>img,.novel-mode .character-stage.crash>img { animation:none; }
+.novel-mode .trade-window { width:min(940px,96vw); }
+.trade-intro { font-size:14px; color:var(--muted); margin-bottom:20px; }
+.novel-mode .trade-window .market-column { display:block; }
+.return-to-story { width:100%; margin-top:20px; }
+.novel-mode .chart-readout,.novel-mode .chart-legend,.novel-mode .chart-heading h2 span,.novel-mode .market-note p,.novel-mode .note-label { font-size:12px; }
+.novel-mode .account-strip span,.novel-mode .account-strip small,.novel-mode .position-details,.novel-mode .pending-line p { font-size:12px; }
+.novel-mode .trade-settings>.small,.novel-mode .text-button { font-size:12px; }
+.novel-mode .prose { font-size:14px; }
+.novel-mode .small { font-size:12px; }
+.novel-mode .ending-art { height:280px; object-position:center 35%; }
+@media(max-width:1100px) {
+  .novel-mode .start-copy { max-width:500px; padding:22px 26px; }
+  .novel-mode .start-quote { right:3vw; width:290px; font-size:15px; }
+  .novel-mode .dialogue-box { padding:17px 22px; }
+  .novel-actions { gap:5px; }
+  .glass-button { font-size:12px; padding:9px 10px; }
+  .novel-mode .advance-bar .primary { min-width:175px; }
+}
+@media(max-width:820px) {
+  .novel-mode .app-header { min-height:58px; padding:0 16px; }
+  .novel-mode .start-screen { min-height:calc(100svh - 58px); padding:240px 20px 30px; }
+  .novel-mode .start-copy { max-width:580px; margin:auto; background:#112138ed; }
+  .novel-mode .start-visual>img { object-position:65% top; }
+  .novel-mode .start-quote { display:none; }
+  .novel-mode .start-copy h1 { font-size:38px; }
+  .novel-mode .character-stage { height:calc(100svh - 58px); min-height:850px; }
+  .scene-hud { top:18px; left:20px; right:20px; }
+  .scene-status { width:230px; }
+  .scene-position h1 { font-size:25px; }
+  .novel-mode .character-stage>.story-art { object-position:57% top; }
+  .novel-mode .dialogue-text { font-size:17px; }
+  .novel-mode .dialogue-choices { grid-template-columns:1fr; gap:7px; }
+  .novel-mode .dialogue-choices button { min-height:43px; padding:8px 14px; }
+  .novel-mode .advance-bar { align-items:flex-end; gap:9px; }
+  .novel-actions { max-width:440px; }
+  .scene-foot small { display:none; }
+  .novel-mode .date-plan { top:165px; left:20px; font-size:12px; }
+}
+@media(max-width:520px) {
+  .novel-mode .start-screen { padding:185px 12px 20px; }
+  .novel-mode .start-copy { padding:21px 18px; border-radius:6px 24px; }
+  .novel-mode .start-copy h1 { font-size:34px; }
+  .novel-mode .start-visual>img { object-position:58% top; }
+  .novel-mode .character-stage { min-height:820px; height:calc(100svh - 58px); }
+  .novel-mode .character-stage>.story-art { object-position:58% top; }
+  .scene-hud { left:14px; right:14px; top:14px; gap:8px; }
+  .scene-position { max-width:48%; }
+  .scene-position>span { font-size:12px; letter-spacing:0; }
+  .scene-position h1 { font-size:21px; }
+  .scene-position p { font-size:12px; }
+  .novel-mode .day-counter { display:block; margin:2px 0 0; }
+  .scene-status { width:175px; }
+  .novel-mode .relationship { gap:9px; padding-bottom:6px; }
+  .novel-mode .relationship>div { font-size:12px; }
+  .novel-mode .mood-label,.novel-mode .relationship-label { padding:4px 7px; margin:0 0 5px; }
+  .novel-mode .date-plan { top:180px; left:14px; right:14px; }
+  .novel-console { width:calc(100% - 20px); bottom:12px; }
+  .novel-mode .dialogue-box { padding:14px 17px 15px; min-height:220px; border-radius:6px 20px; }
+  .novel-mode .dialogue-text { font-size:16px; line-height:1.9; }
+  .novel-mode .dialogue-heading .speaker>span { font-size:15px; }
+  .speaker>img { width:34px; height:34px; }
+  .novel-mode .advance-bar { display:grid; grid-template-columns:1fr; }
+  .novel-actions { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .glass-button { font-size:12px; padding:7px 5px; min-height:37px; }
+  #trade-button { grid-column:span 2; }
+  .novel-mode .advance-bar .primary { width:100%; min-height:43px; }
+  .scene-foot { font-size:12px; }
+  #save-status { font-size:12px; }
+  .restore-ui { bottom:22px; right:18px; padding:12px 20px; }
+}
+@media(max-height:700px) and (min-width:821px) {
+  .novel-mode .character-stage { min-height:650px; }
+  .novel-mode .dialogue-box { min-height:180px; }
+}
+
+.cg-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:14px 0 24px; }
+.cg-thumb { padding:0; border-radius:8px; overflow:hidden; text-align:left; background:#14243a; }
+.cg-thumb img { aspect-ratio:3/2; object-fit:cover; width:100%; }
+.cg-thumb span { display:block; padding:9px 12px; font-size:13px; }
+.cg-full { width:100%; max-height:64vh; object-fit:contain; }
+.friend-letters { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px; }
+.friend-letter { padding:18px; background:linear-gradient(140deg,#263149,#142438); border:1px solid #91a6ba4f; border-radius:4px 16px; }
+.letter-role { font-size:12px; color:#c4d0df; }
+.friend-letter h3 { color:#e4d6e8; font-size:17px; margin:6px 0 12px; }
+.friend-letter h3 small { display:block; color:#acbed1; font-size:12px; font-weight:400; }
+.friend-letter p { font-family:"Hiragino Mincho ProN","Yu Mincho",serif; font-size:16px; line-height:1.9; min-height:70px; }
+.letter-fact { display:flex; flex-wrap:wrap; gap:8px; font-size:12px; border-top:1px solid var(--line); padding-top:12px; margin-top:14px; color:#c4d0df; }
+.letter-fact a { width:100%; }
+.historical-letter { padding:18px; border:1px solid #b9a2c863; border-radius:8px; margin-top:22px; }
+.historical-letter h3 { font-size:15px; color:#e3c6e1; }
+.historical-letter p { font-size:14px; margin:10px 0; line-height:1.9; }
+.historical-letter a { font-size:12px; }
+.backlog article { border-bottom:1px solid var(--line); padding:18px 0; }
+.backlog small { font-size:12px; color:var(--muted); }
+.backlog h3 { font-size:14px; color:var(--pink); margin:8px 0; }
+.backlog p { white-space:pre-line; font-size:15px; line-height:1.9; }
+@media(max-width:520px) {
+  .novel-mode .start-visual>img { height:400px; object-position:58% 30%; }
+  .friend-letters { grid-template-columns:1fr; }
+  .friend-letter p { min-height:0; }
+  .cg-gallery { gap:8px; }
+}
+@media(max-width:520px) {
+  .novel-mode .character-stage>.story-art { height:calc(100% - 230px); min-height:460px; bottom:auto; object-position:58% top; }
+}
+.novel-mode .character-stage.art-only>.story-art { height:100%; min-height:0; object-fit:contain; object-position:center; }
+
+.novel-mode .start-copy h1 { font-size:clamp(34px,3.8vw,50px); margin:14px 0; }
+.period-settings { font-size:14px; color:#d5e3ef; }
+.period-settings>summary { padding:10px 0; }
+.period-settings[open] .era-buttons { margin-top:8px; }
+.period-settings[open] { padding-bottom:8px; }
+@media(max-width:520px) { .novel-mode .start-copy h1 { font-size:34px; } }
+
+/* Ordinary scenes use a background plate and an aligned standing sprite. */
+.novel-mode .character-stage { display:grid; grid-template-rows:minmax(410px,1fr) auto; height:auto; min-height:calc(100svh - 62px); isolation:isolate; }
+.novel-mode .character-stage>.story-art { height:100%; min-height:0; object-fit:cover; object-position:center; z-index:-3; }
+.standing-character { position:absolute; top:55px; left:61%; transform:translateX(-50%); height:min(106svh,980px); aspect-ratio:2/3; z-index:-2; pointer-events:none; }
+.standing-character>img { position:absolute; inset:0; display:block; width:100%; height:100%; max-width:none; object-fit:contain; }
+.standing-character .eyes-layer { clip-path:inset(16% 38% 76.5% 38%); }
+.standing-character .mouth-layer { clip-path:inset(23.8% 44% 72.8% 47%); }
+.character-stage[data-scene="winter"] .standing-character { filter:brightness(.84) saturate(.88); }
+.character-stage[data-scene="room-rise"] .standing-character { filter:brightness(.92); }
+.scene-shade { z-index:-1; background:linear-gradient(#071321a6,transparent 29%,transparent 66%,#081226ad); }
+.novel-console { position:relative; left:auto; bottom:auto; transform:none; grid-row:2; margin:0 auto 18px; }
+.cg-caption { position:absolute; top:235px; left:3vw; padding:7px 11px; border-left:2px solid #efc4db; font-size:13px; letter-spacing:.08em; background:#172438ae; color:#fff0fa; }
+.event-cg .cg-caption { animation:cg-caption-in .45s ease-out; }
+@keyframes cg-caption-in { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:none; } }
+.reading-controls { display:flex; align-items:center; gap:15px; }
+.novel-mode #reveal-line { font-size:14px; padding:5px 7px; min-height:34px; }
+.dialogue-text.is-revealing { cursor:pointer; }
+.visually-hidden { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+.reading-settings { display:grid; gap:12px; margin:24px 0; }
+.reading-settings>label { font-size:16px; }
+.reading-settings select { font-size:16px; padding:12px; }
+.reading-settings .motion-setting { display:flex; gap:10px; align-items:center; }
+.motion-setting input { width:19px; height:19px; accent-color:var(--pink); }
+.reading-settings p { font-size:14px; color:var(--muted); line-height:1.8; }
+.novel-mode .character-stage.art-only { height:calc(100svh - 62px); min-height:500px; grid-template-rows:1fr; }
+.art-only .cg-caption { display:none; }
+.art-only .standing-character { height:97%; top:3%; left:50%; }
+.novel-mode .character-stage.art-only:not(.event-cg)>.story-art { object-fit:cover; }
+@media(max-width:820px) {
+  .novel-mode .character-stage { min-height:calc(100svh - 58px); grid-template-rows:minmax(410px,1fr) auto; }
+  .standing-character { left:57%; top:112px; height:760px; }
+  .novel-console { margin-bottom:14px; }
+  .scene-position { max-width:50%; }
+  .cg-caption { top:230px; left:20px; }
+}
+@media(max-width:520px) {
+  .novel-mode .character-stage { grid-template-rows:minmax(390px,1fr) auto; }
+  .standing-character { left:53%; top:125px; height:660px; }
+  .novel-console { margin-bottom:12px; }
+  .cg-caption { top:240px; left:14px; max-width:80%; }
+  .reading-controls { gap:6px; }
+  .novel-mode .dialogue-heading { align-items:center; }
+  .novel-mode #reveal-line { font-size:14px; }
+  .novel-mode .character-stage>.story-art { object-position:55% center; }
+  .novel-mode .character-stage.event-cg>.story-art { object-position:58% top; }
+}
+@media(prefers-reduced-motion:reduce) { .event-cg .cg-caption { animation:none; } }
